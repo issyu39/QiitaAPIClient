@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             val repositories = service.retrieveRepositories("issyu39").await()
             repositories.forEach { println("TAG_ $it") }
+            val users = service.retrieveUsers().await()
+            users.forEach { println("TAG_ $it") }
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.issyu39.retrofitcoroutines
 
-data class Repository(
-    val id: Long,
-    val name: String,
+data class Users (
+    val login: String,
+    val id: Int,
     val url: String
 )
