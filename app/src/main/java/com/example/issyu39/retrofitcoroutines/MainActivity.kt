@@ -2,6 +2,7 @@ package com.example.issyu39.retrofitcoroutines
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.issyu39.retrofitcoroutines.network.QiitaService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -16,17 +17,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val service = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
+            .baseUrl("https://qiita.com/api/v2/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
-            .create(GitHubService::class.java)
+            .create(QiitaService::class.java)
 
         GlobalScope.launch {
-            val repositories = service.retrieveRepositories("issyu39").await()
-            repositories.forEach { println("TAG_ $it") }
-            val users = service.retrieveUsers().await()
-            users.forEach { println("TAG_ $it") }
+            service.getArticle().await().forEach { println("$it")}
         }
     }
 }
