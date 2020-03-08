@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch {
-            api.getArticle().await().forEach { println("$it")}
+            api.getArticle().forEach { println("$it")}
+            println(api.getUser("issyu_39"))
         }
     }
 }
