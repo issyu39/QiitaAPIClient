@@ -6,7 +6,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface QiitaService {
+interface QiitaApi {
     @GET("items/?page=1&per_page=100")
     fun getArticle(
     ): Deferred<List<Article>>
