@@ -1,22 +1,19 @@
 package com.example.issyu39.retrofitcoroutines
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.example.issyu39.retrofitcoroutines.network.ApiService
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
-
-    private val api = ApiService.get()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch {
-            api.getArticle().forEach { println("$it")}
-            println(api.getUser("issyu_39"))
-        }
+        viewModel.articleList.observe(this, Observer {
+            it.forEach { println(it) }
+        })
     }
 }
