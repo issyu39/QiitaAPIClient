@@ -15,8 +15,7 @@ class ApiService {
         }
 
         fun get(): QiitaApi {
-            val retrofit = getRetrofit()
-            return retrofit.create(QiitaApi::class.java)
+            return getRetrofit().create(QiitaApi::class.java)
         }
     }
 }
