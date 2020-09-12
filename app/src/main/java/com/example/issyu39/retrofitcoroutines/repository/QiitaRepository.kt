@@ -1,10 +1,10 @@
 package com.example.issyu39.retrofitcoroutines.repository
 
 import com.example.issyu39.retrofitcoroutines.model.Article
-import com.example.issyu39.retrofitcoroutines.network.ApiService
+import com.example.issyu39.retrofitcoroutines.network.QiitaApiClient
 
 class QiitaRepository {
-    private val api = ApiService.get()
+    private val api = QiitaApiClient.create()
 
     /**
      * Qiitaの記事を取得する
