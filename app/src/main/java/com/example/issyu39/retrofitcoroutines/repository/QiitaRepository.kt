@@ -9,7 +9,8 @@ class QiitaRepository {
     /**
      * Qiitaの記事を取得する
      */
-    suspend fun getArticle(): List<Article> {
-        return api.getArticle()
+    suspend fun getArticleList(page: Int, per_page: Int): List<Article> {
+        return api.getArticleList(page, per_page)
     }
+
 }
