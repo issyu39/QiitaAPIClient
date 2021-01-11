@@ -10,8 +10,11 @@ interface QiitaService {
     @GET("items")
     suspend fun getArticleList(
         @Query("page") page: Int,
-        @Query("per_page") per_page: Int): List<Article>
+        @Query("per_page") per_page: Int
+    ): List<Article>
 
     @GET("users/{id}")
-    suspend fun getUser(@Path("id") id: String): User
+    suspend fun getUser(
+        @Path("id") id: String
+    ): User
 }
