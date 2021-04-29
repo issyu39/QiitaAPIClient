@@ -1,12 +1,12 @@
-package com.example.issyu39.retrofitcoroutines
+package com.example.issyu39.retrofitcoroutines.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
+import com.example.issyu39.retrofitcoroutines.R
 import com.example.issyu39.retrofitcoroutines.databinding.ActivityMainBinding
 import com.example.issyu39.retrofitcoroutines.ext.viewBinding
-import com.example.issyu39.retrofitcoroutines.ui.ArticleListController
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()

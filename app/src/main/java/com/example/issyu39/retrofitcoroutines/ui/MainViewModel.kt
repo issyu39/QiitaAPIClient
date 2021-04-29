@@ -1,4 +1,4 @@
-package com.example.issyu39.retrofitcoroutines
+package com.example.issyu39.retrofitcoroutines.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
