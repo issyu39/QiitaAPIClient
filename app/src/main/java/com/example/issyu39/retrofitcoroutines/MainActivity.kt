@@ -16,13 +16,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.articleListView.adapter = articleListController.adapter
-        mainViewModel.getArticleList(1, PER_PAGE)
+        mainViewModel.getArticleList(1, "Android")
         mainViewModel.articleList.observe(this) {
             articleListController.setData(it)
         }
-    }
-
-    companion object {
-        private const val PER_PAGE = 50
     }
 }

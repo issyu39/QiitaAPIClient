@@ -7,10 +7,14 @@ class QiitaRepository {
     private val api = QiitaApiClient.create()
 
     /**
-     * Qiitaの記事を取得する
+     * 記事一覧を取得する
      */
-    suspend fun getArticleList(page: Int, per_page: Int): List<Article> {
-        return api.getArticleList(page, per_page)
+    suspend fun getArticleList(page: Int, query: String?): List<Article> {
+        return api.getArticleList(page.toString(), PER_PAGE, query)
+    }
+
+    companion object {
+        private const val PER_PAGE = "50"
     }
 
 }

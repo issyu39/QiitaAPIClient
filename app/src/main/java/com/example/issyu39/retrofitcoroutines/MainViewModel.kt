@@ -15,10 +15,10 @@ class MainViewModel : ViewModel() {
     val articleList: LiveData<List<Article>>
         get() = _articleList
 
-    fun getArticleList(page: Int, per_page: Int) {
+    fun getArticleList(page: Int, query: String? = null) {
         viewModelScope.launch {
             runCatching {
-                qiitaRepository.getArticleList(page, per_page)
+                qiitaRepository.getArticleList(page, query)
             }.fold(
                 onSuccess = {
                     _articleList.value = it
