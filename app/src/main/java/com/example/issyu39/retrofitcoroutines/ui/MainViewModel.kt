@@ -19,10 +19,17 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             runCatching {
                 qiitaRepository.getArticleList(page, query)
-                    .collect {
-                        _articleList.value = it
+            }.fold(
+                onSuccess = {
+                    it.collect { articleList ->
+                        _articleList.value = articleList
                     }
-            }
+                },
+                onFailure = {
+                    // TODO: エラー処理
+                    println("Error")
+                }
+            )
         }
     }
 }

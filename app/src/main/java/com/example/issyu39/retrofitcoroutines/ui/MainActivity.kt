@@ -12,15 +12,15 @@ import kotlinx.coroutines.flow.collect
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by viewBinding()
-    private val articleListController = ArticleListController()
+    private val adapter = ArticleListAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.articleListView.adapter = articleListController.adapter
         mainViewModel.getArticleList(1, "Android")
+        binding.articleListView.adapter = adapter
         lifecycleScope.launchWhenStarted {
             mainViewModel.articleList.collect {
-                articleListController.setData(it)
+                adapter.updateList(it)
             }
         }
     }

@@ -10,10 +10,12 @@ object QiitaApiClient {
     private const val BASE_URL = "https://qiita.com/api/v2/"
     private val contentType = MediaType.get("application/json")
 
+    private val json = Json { ignoreUnknownKeys = true }
+
     fun create(): QiitaService {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(Json.asConverterFactory(contentType))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
         return retrofit.create(QiitaService::class.java)
