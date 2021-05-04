@@ -37,6 +37,8 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(article: Article) {
             binding.listItemTitle.text = article.title
+            binding.itemUserOrganization.text = article.user.organization
+            binding.itemUserId.text = article.user.id
         }
 
         companion object {
