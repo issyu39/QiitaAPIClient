@@ -12,14 +12,12 @@ import kotlin.reflect.KProperty
 // ActivityでViewの参照を持つときにメモリリークしないように
 // https://satoshun.github.io/2020/01/fragment-view-memory-leak/
 fun <T : ViewDataBinding> AppCompatActivity.viewBinding(): ReadOnlyProperty<AppCompatActivity, T> =
-    object : ReadOnlyProperty<AppCompatActivity, T> {
-        override fun getValue(thisRef: AppCompatActivity, property: KProperty<*>): T {
-            val view = thisRef.findViewById<ViewGroup>(android.R.id.content)[0]
-            var binding = view.getTag(R.id.activity_binding) as? T
-            if (binding == null) {
-                binding = DataBindingUtil.bind(view)
-                view.setTag(R.id.activity_binding, binding)
-            }
-            return binding!!
+    ReadOnlyProperty<AppCompatActivity, T> { thisRef, _ ->
+        val view = thisRef.findViewById<ViewGroup>(android.R.id.content)[0]
+        var binding = view.getTag(R.id.activity_binding) as? T
+        if (binding == null) {
+            binding = DataBindingUtil.bind(view)
+            view.setTag(R.id.activity_binding, binding)
         }
+        binding!!
     }
