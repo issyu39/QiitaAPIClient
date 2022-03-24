@@ -2,6 +2,7 @@ package com.example.issyu39.retrofitcoroutines.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         }
                         is State.Failure -> {
                             binding.progressbar.visibility = View.INVISIBLE
-                            // TODO: エラー処理
+                            // FIXME: エラー時の表示は検討する
+                            Toast.makeText(this@MainActivity, "通信エラーが発生しました。", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

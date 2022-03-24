@@ -18,6 +18,9 @@ class MainViewModel : ViewModel() {
         _articleList.value = State.Loading()
         viewModelScope.launch {
             qiitaRepository.getArticleList(page, query)
+                .catch { exception ->
+                    _articleList.value = State.Failure(exception)
+                }
                 .collect { articleList ->
                     _articleList.value = State.Success(articleList)
                 }
