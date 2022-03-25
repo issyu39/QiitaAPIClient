@@ -12,9 +12,11 @@ import com.example.issyu39.retrofitcoroutines.R
 import com.example.issyu39.retrofitcoroutines.databinding.ActivityMainBinding
 import com.example.issyu39.retrofitcoroutines.ext.viewBinding
 import com.example.issyu39.retrofitcoroutines.ui.model.State
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels()
     private val binding: ActivityMainBinding by viewBinding()
