@@ -13,11 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val binding: ActivityMainBinding by viewBinding()
     private val tagList = listOf(
-        "android",
-        "flutter",
-        "kotlin",
-        "react",
-        "go"
+        "Android",
+        "Flutter",
+        "Kotlin",
+        "React",
+        "TypeScript"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
