@@ -1,6 +1,5 @@
-package com.example.issyu39.retrofitcoroutines.network
+package com.example.issyu39.retrofitcoroutines.data
 
-import com.example.issyu39.retrofitcoroutines.repository.QiitaRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
