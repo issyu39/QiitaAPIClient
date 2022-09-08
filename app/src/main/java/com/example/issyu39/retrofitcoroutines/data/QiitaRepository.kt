@@ -17,5 +17,4 @@ class QiitaRepository(
     companion object {
         private const val PER_PAGE = "50"
     }
-
 }

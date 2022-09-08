@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.issyu39.retrofitcoroutines.R
-import com.example.issyu39.retrofitcoroutines.databinding.LayoutItemListBinding
+import com.example.issyu39.retrofitcoroutines.databinding.LayoutArticleBinding
 import com.example.issyu39.retrofitcoroutines.model.Article
 
 class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -16,11 +16,11 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = articleList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
-        ItemViewHolder.create(parent)
+        ArticleViewHolder.create(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ItemViewHolder -> holder.bind(articleList[position])
+            is ArticleViewHolder -> holder.bind(articleList[position])
             else -> throw IllegalStateException("$holder is not defined view holder type.")
         }
     }
@@ -31,23 +31,23 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ItemViewHolder private constructor(
-        private val binding: LayoutItemListBinding
+    class ArticleViewHolder private constructor(
+        private val binding: LayoutArticleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Article) {
-            binding.listItemTitle.text = article.title
-            binding.itemUserOrganization.text = article.user.organization
-            binding.itemUserId.text = article.user.id
+            binding.articleTitle.text = article.title
+            binding.userOrganization.text = article.user.organization
+            binding.userId.text = article.user.id
         }
 
         companion object {
-            fun create(parent: ViewGroup): ItemViewHolder {
+            fun create(parent: ViewGroup): ArticleViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
-                return ItemViewHolder(
+                return ArticleViewHolder(
                     DataBindingUtil.inflate(
                         inflater,
-                        R.layout.layout_item_list,
+                        R.layout.layout_article,
                         parent,
                         false
                     )

@@ -16,7 +16,6 @@ import javax.inject.Singleton
 object QiitaApiModule {
     private const val BASE_URL = "https://qiita.com/api/v2/"
     private val contentType = MediaType.get("application/json")
-
     private val json = Json { ignoreUnknownKeys = true }
 
     @Singleton
