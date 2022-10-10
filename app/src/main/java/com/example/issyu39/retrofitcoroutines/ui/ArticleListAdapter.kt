@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.issyu39.retrofitcoroutines.R
 import com.example.issyu39.retrofitcoroutines.databinding.LayoutArticleBinding
 import com.example.issyu39.retrofitcoroutines.model.Article
@@ -37,8 +39,14 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(article: Article) {
             binding.articleTitle.text = article.title
-            binding.userOrganization.text = article.user.organization
-            binding.userId.text = article.user.id
+            binding.userProfileImage.load(article.user.profileImageUrl) {
+                transformations(CircleCropTransformation())
+            }
+            binding.userName.text = if (article.user.organization.isNullOrEmpty()) {
+                article.user.id
+            } else {
+                article.user.id + "・" + article.user.organization
+            }
         }
 
         companion object {

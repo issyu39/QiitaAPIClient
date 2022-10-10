@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object QiitaApiModule {
     private const val BASE_URL = "https://qiita.com/api/v2/"
-    private val contentType = MediaType.get("application/json")
+    private val contentType = "application/json".toMediaType()
     private val json = Json { ignoreUnknownKeys = true }
 
     class AddAuthorizationHeaderInterceptor : Interceptor {

@@ -12,46 +12,48 @@
 
         <TextView
             android:id="@+id/article_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:textColor="@color/darkBlack"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             tools:text="タイトル"
             />
 
-        <TextView
-            android:id="@+id/user_organization"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintTop_toTopOf="@id/user_id"
-            app:layout_constraintEnd_toStartOf="@id/user_id"
-            tools:text="Organization"
+        <ImageView
+            android:id="@+id/user_profile_image"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@id/article_title"
+            app:layout_constraintTop_toBottomOf="@id/article_title"
             />
 
         <TextView
-            android:id="@+id/user_id"
+            android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/article_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="issyu_39"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/lightDarkBlack"
+            app:layout_constraintTop_toTopOf="@id/user_profile_image"
+            app:layout_constraintStart_toEndOf="@id/user_profile_image"
+            tools:text="issyu_39・Organization"
             />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:background="@color/lightGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_id"
+            app:layout_constraintTop_toBottomOf="@id/user_profile_image"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
