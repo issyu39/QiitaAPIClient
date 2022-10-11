@@ -27,12 +27,6 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    fun updateList(list: List<Article>) {
-        _articleList.clear()
-        _articleList.addAll(list)
-        notifyDataSetChanged()
-    }
-
     class ArticleViewHolder private constructor(
         private val binding: LayoutArticleBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -42,7 +36,12 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.userProfileImage.load(article.user.profileImageUrl) {
                 transformations(CircleCropTransformation())
             }
-            binding.userName.text = if (article.user.organization.isNullOrEmpty()) {
+            binding.userName.text = getUsernameText(article)
+            binding.createdAt.text = article.convertToDate()
+        }
+
+        private fun getUsernameText(article: Article): String {
+            return if (article.user.organization.isNullOrEmpty()) {
                 article.user.id
             } else {
                 article.user.id + "・" + article.user.organization
@@ -62,5 +61,11 @@ class ArticleListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 )
             }
         }
+    }
+
+    fun updateList(list: List<Article>) {
+        _articleList.clear()
+        _articleList.addAll(list)
+        notifyDataSetChanged()
     }
 }
