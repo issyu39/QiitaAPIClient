@@ -22,12 +22,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.topPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = tagList.size
-            override fun createFragment(position: Int) = ArticleListFragment.newInstance(tagList[position])
+        binding.topPager.let { pager ->
+            // 隣のpageをprefetchする
+            pager.offscreenPageLimit = 1
+            pager.adapter = object : FragmentStateAdapter(this) {
+                override fun getItemCount(): Int = tagList.size
+                override fun createFragment(position: Int) =
+                    ArticleListFragment.newInstance(tagList[position])
+            }
+            TabLayoutMediator(binding.topTabLayout, pager) { tab, position ->
+                tab.text = tagList[position]
+            }.attach()
         }
-        TabLayoutMediator(binding.topTabLayout, binding.topPager) { tab, position ->
-            tab.text = tagList[position]
-        }.attach()
     }
 }
