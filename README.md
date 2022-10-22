@@ -1,6 +1,10 @@
 # QiitaClient
 Qiita Client App (Android)
 
+## What is Qiita?
+Qiita is a Japanese service for recording and sharing engineering knowledge.   
+You can easily record and publish your programming tips, know-how, and notes.
+
 ## Screenshots
 | movie | image |
 |--------|-------|
