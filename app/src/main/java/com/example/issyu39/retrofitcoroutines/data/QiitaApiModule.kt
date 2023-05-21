@@ -53,8 +53,4 @@ object QiitaApiModule {
     @Provides
     fun provideQiitaService(retrofit: Retrofit): QiitaService =
         retrofit.create(QiitaService::class.java)
-
-    @Singleton
-    @Provides
-    fun providesQiitaRepository(qiitaService: QiitaService) = QiitaRepository(qiitaService)
 }

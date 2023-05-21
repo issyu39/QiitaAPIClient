@@ -3,8 +3,9 @@ package com.example.issyu39.retrofitcoroutines.data
 import com.example.issyu39.retrofitcoroutines.model.Article
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class QiitaRepository(
+class QiitaRepository @Inject constructor(
     private val qiitaService: QiitaService
 ) {
     /**
