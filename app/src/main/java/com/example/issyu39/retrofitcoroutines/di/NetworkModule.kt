@@ -1,6 +1,7 @@
-package com.example.issyu39.retrofitcoroutines.data
+package com.example.issyu39.retrofitcoroutines.di
 
 import com.example.issyu39.retrofitcoroutines.BuildConfig
+import com.example.issyu39.retrofitcoroutines.data.QiitaService
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -9,7 +10,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object QiitaApiModule {
+object NetworkModule {
     private const val BASE_URL = "https://qiita.com/api/v2/"
     private val contentType = "application/json".toMediaType()
     private val json = Json { ignoreUnknownKeys = true }
